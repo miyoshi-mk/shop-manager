@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 30px;
+    background-color: #f7f7f7;
+}
+
+.main-content {
+	margin-left:210px;
+	padding:20px;
+}
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.info-board {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 30px;
+    width: 300px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
+
+.info-board p {
+    margin: 5px 0;
+    font-weight: bold;
+    color: #555;
+}
+
+canvas {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+.summary .card {
+	text-align:center; 
+}
