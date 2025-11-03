@@ -1,18 +1,61 @@
 @charset "UTF-8";
 
+:root {
+  --primary: #2f3e55;
+  --accent: #4a6078;
+  --card-bg: #ffffff;
+  --text: #333;
+}
+
 body {
     font-family: Arial, sans-serif;
-    margin: 30px;
-    background-color: #f7f7f7;
+	background-color: #f6f8fb;
+	margin: 0;
 }
 
 .main-content {
-	margin-left:210px;
-	padding:20px;
+	margin-left:220px;
+	padding:24px;
+	margin-top: 70px;
 }
-h1 {
-    color: #333;
+
+h2 {
+    color: var(--primary);
     margin-bottom: 20px;
+}
+
+/* summary cards */
+.summary{
+	display:flex;
+	gap:16px;
+	margin-bottom:20px;
+	flex-wrap:wrap;
+}
+.card {
+  background:var(--card-bg);
+  padding:16px;
+  border-radius:10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  text-align: center;
+  min-width:160px;
+}
+.card-label {
+	font-size:0.9rem;
+	color:#666;
+}
+.card-value {
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: var(--accent);
+}
+
+/* chart area */
+.chart-area {
+	background:var(--card-bg);
+	border-radius: 10px;
+	padding: 20px;
+	box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+	height: 360px;
 }
 
 .info-board {

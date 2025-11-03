@@ -12,16 +12,30 @@
 <jsp:include page="sidebar.jsp" />
 
 <main class="main-content">
-	<h2>新規商品登録</h2>
-	
-	 <form action="${pageContext.request.contextPath}/addProduct" method="post">
-	    <p>商品名: <input type="text" name="name" required></p>
-	    <p>在庫数: <input type="number" name="stock" min="0" required></p>
-	    <p>価格: <input type="number" name="price" min="0" required></p>
-	    <input type="submit" value="登録">
-	</form>
-	
-	<a href="${pageContext.request.contextPath}/productList">商品一覧に戻る</a>
+ 	<div class="form-container">
+		<h2>新規商品登録</h2>
+		 <form action="${pageContext.request.contextPath}/addProduct" method="post">
+		     <div class="form-group">
+			     <label for="name">商品名</label>
+	       		 <input type="text" id="name" name="name" required>
+       		 </div>
+       		 
+		   	 <div class="form-group">
+			     <label for="stock">在庫数</label>
+			     <input type="number" id="stock" name="stock" min="0" required>
+      		 </div>
+
+	         <div class="form-group">
+			     <label for="price">価格</label>
+			     <input type="number" id="price" name="price" min="0" required>
+	         </div>
+	         
+		     <div class="form-actions">
+        	 	<input type="submit" value="登録">
+      		 </div>
+		</form>
+		<a href="${pageContext.request.contextPath}/productList">商品一覧に戻る</a>
+	</div>	
 </main>
 </body>
 </html>
