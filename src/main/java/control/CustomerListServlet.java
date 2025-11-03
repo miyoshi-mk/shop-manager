@@ -32,14 +32,22 @@ public class CustomerListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 try {
-	            List<Customer> customers = customerDAO.selectAll();
-	            request.setAttribute("customers", customers);
-	            request.getRequestDispatcher("/WEB-INF/jsp/customerList.jsp").forward(request, response);
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-	        }
+		System.out.println("=== CustomerListServlet accessed ===");
+		
+		try {
+			CustomerDAO dao = new CustomerDAO();
+			List<Customer> list = dao.selectAll();
+			System.out.println("customer list size = " + (list == null ? 0 : list.size()));
+			
+			request.setAttribute("customerList", list);
+			request.getRequestDispatcher("/WEB-INF/jsp/customerList.jsp").forward(request, response);
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+			request.setAttribute("error", "顧客一覧の取得中にエラーが発生しました");
+			request.getRequestDispatcher("/WEB-INF/jsp/error.jsp").forward(request, response);
+		}
 	}
 
 	/**

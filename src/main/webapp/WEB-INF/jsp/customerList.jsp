@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.List, model.Customer" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +16,8 @@
 
 <main class="main-content">
 	<h2>顧客一覧</h2>
+	<a href="${pageContext.request.contextPath}/add-customer">新規登録</a>
+	<c:if test="${not empty customerList}">
 	<table border="1" cellpadding="5" cellspacing="0">
         <thead>
             <tr>
@@ -25,7 +30,7 @@
             </tr>
         </thead>
         <tbody>
-            <c:forEach var="c" items="${customers}">
+            <c:forEach var="c" items="${customerList}">
                 <tr>
                     <td>${c.id}</td>
                     <td>${c.name}</td>
@@ -37,6 +42,8 @@
             </c:forEach>
         </tbody>
     </table>
+    </c:if>
+<a href="${pageContext.request.contextPath}/dashboard">ダッシュボードへ戻る</a>
 </main>
 </body>
 </html>

@@ -1,6 +1,10 @@
 package control;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Consumer;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -9,24 +13,54 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class PageServlet
- */
+import model.Customer;
+import model.dao.CustomerDAO;
+
+//画面遷移を一元管理するServlet
 @WebServlet("/page")
 public class PageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public PageServlet() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	private final Map<String, Consumer<HttpServletRequest>> handlers = new HashMap<>();
+	
+	@Override
+	public void init() throws ServletException {
+        super.init();
+        handlers.put("customerList", req -> {
+            try {
+                CustomerDAO dao = new CustomerDAO();
+                List<Customer> list = dao.selectAll();
+                req.setAttribute("customerList", list);
+            } catch (Exception e) {
+                e.printStackTrace();
+                req.setAttribute("error", "顧客一覧の取得中にエラーが発生しました");
+            }
+        });
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+        handlers.put("productList", req -> {
+            try {
+                // ProductDAO dao = new ProductDAO();
+                // List<Product> plist = dao.selectAll();
+                // req.setAttribute("productList", plist);
+            } catch (Exception e) {
+                e.printStackTrace();
+                req.setAttribute("error", "商品一覧の取得中にエラーが発生しました");
+            }
+        });
+
+        handlers.put("orderList", req -> {
+            try {
+                // OrderDAO dao = new OrderDAO();
+                // List<Order> olist = dao.selectAll();
+                // req.setAttribute("orderList", olist);
+            } catch (Exception e) {
+                e.printStackTrace();
+                req.setAttribute("error", "発注一覧の取得中にエラーが発生しました");
+            }
+        });
+
+    }
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -49,17 +83,19 @@ public class PageServlet extends HttpServlet {
 		default:
 			path += "dashboard.jsp";
 		}
+		
+		Consumer<HttpServletRequest> handler = handlers.get(name);
+        if (handler != null) {
+            handler.accept(request);
+        }
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher(path);
-		dispatcher.forward(request, response);
+        RequestDispatcher dispatcher = request.getRequestDispatcher(path);
+        dispatcher.forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
