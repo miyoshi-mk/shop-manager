@@ -13,7 +13,7 @@ public class CustomerDAO {
 	
 	public List<Customer> selectAll() throws Exception {
         List<Customer> list = new ArrayList<>();
-        String sql = "SELECT id, name, email, phone, address, registered_at FROM customer ORDER BY id ASC";
+        String sql = "SELECT id, customer_name, email, phone, address, registered_at FROM customer ORDER BY id ASC";
         
         try (Connection con = DbManager.getConnection("mysql");
              PreparedStatement ps = con.prepareStatement(sql);

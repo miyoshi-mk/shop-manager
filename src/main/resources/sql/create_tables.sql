@@ -21,3 +21,11 @@ CREATE TABLE s_order (
 	order_date TIMESTAMP
 );
 
+CREATE TABLE customer (
+    customer_id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_name VARCHAR(100) NOT NULL,
+    email VARCHAR(100),
+    phone VARCHAR(50),
+    address VARCHAR(255),
+    registered_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
