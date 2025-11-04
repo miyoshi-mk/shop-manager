@@ -4,9 +4,7 @@
 <%@ page import="model.dao.ProductDAO" %>
 
 <%
-    int id = Integer.parseInt(request.getParameter("id"));
-    ProductDAO dao = new ProductDAO();
-    Product p = dao.selectById(id);
+    Product p = (Product)request.getAttribute("product");
 %>
 
 <!DOCTYPE html>
@@ -14,19 +12,38 @@
 <head>
 <meta charset="UTF-8">
 <title>商品編集</title>
-<link rel="stylesheet" type="text/css" href="css/dashboard.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 </head>
 <body>
-<h1>商品編集</h1>
+<jsp:include page="header.jsp" />
+<jsp:include page="sidebar.jsp" />
 
-<form action="editProduct" method="post">
-    <input type="hidden" name="id" value="<%= p.getId() %>">
-    <p>商品名: <input type="text" name="name" value="<%= p.getProductName() %>" required></p>
-    <p>在庫数: <input type="number" name="stock" value="<%= p.getStock() %>" min="0" required></p>
-    <p>価格: <input type="number" name="price" value="<%= p.getPrice() %>" min="0" required></p>
-    <input type="submit" value="更新">
-</form>
-
-<a href="products.jsp">商品一覧に戻る</a>
+<main class="main-content">
+	<h2>商品編集</h2>
+	
+	<form action="${pageContext.request.contextPath}/editProduct" method="post">
+	    <input type="hidden" name="id" value="<%=p.getProductId()%>">
+		     
+	    <div class="form-group">
+		    <label>商品名：</label>
+	        <input type="text" name="name" value="<%=p.getProductName()%>" required><br>
+		</div>
+		
+		<div class="form-group">
+	        <label>在庫数：</label>
+	        <input type="number" name="stock" value="<%=p.getStock()%>" required><br>
+		</div>
+		
+		<div class="form-group">
+	        <label>価格：</label>
+	        <input type="number" name="price" value="<%=p.getPrice()%>" required><br>
+		</div>
+		
+		<div class="form-actions">
+        	<button type="submit">更新</button>
+        	<a href="${pageContext.request.contextPath}/productList">商品一覧へ戻る</a>
+        </div>
+	</form>
+</main>
 </body>
 </html>

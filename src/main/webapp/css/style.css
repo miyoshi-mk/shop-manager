@@ -186,6 +186,124 @@ a.link-back:hover {
 	text-decoration: underline;
 }
 
+/* === product list layout === */
+.main-content {
+  margin-left: 220px;
+  margin-top: 80px;
+  padding: 40px;
+  max-width: 1000px;
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+.table-actions {
+  width: 100%;
+  text-align: right;
+  margin-bottom: 16px;
+}
+
+.add-btn {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.add-btn:hover {
+  background: var(--accent-hover);
+}
+
+/* === テーブル本体 === */
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border: 1px solid #ccc;
+  table-layout: fixed;
+}
+
+.product-table th,
+.product-table td {
+  border: 1px solid #ccc;
+  padding: 10px 12px;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.product-table th {
+  background-color: #f0f4f8;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* 各列の幅調整 */
+.product-table th:nth-child(1),
+.product-table td:nth-child(1) {
+  width: 8%;   /* ID */
+}
+
+.product-table th:nth-child(2),
+.product-table td:nth-child(2) {
+  width: 40%;  /* 商品名（広め） */
+}
+
+.product-table th:nth-child(3),
+.product-table td:nth-child(3) {
+  width: 15%;  /* 在庫数 */
+}
+
+.product-table th:nth-child(4),
+.product-table td:nth-child(4) {
+  width: 15%;  /* 価格 */
+}
+
+.product-table th:nth-child(5),
+.product-table td:nth-child(5) {
+  width: 22%;  /* 操作ボタン（編集・削除） */
+}
+
+.low-stock {
+  background-color: #ffeaea;
+}
+
+/* 操作リンク */
+.link-edit, .link-delete {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+  margin: 0 6px;
+}
+
+.link-delete {
+  color: #d9534f;
+}
+
+.link-edit:hover, .link-delete:hover {
+  text-decoration: underline;
+}
+
+/* スマホ対応 */
+@media (max-width: 720px) {
+  .main-content {
+    margin-left: 0;
+    padding: 20px;
+    max-width: 100%;
+  }
+
+  .product-table {
+    font-size: 0.9rem;
+  }
+
+  .table-actions {
+    text-align: center;
+  }
+}
+
 @media (max-width: 720px) {
   .form-main {
     margin-left: 0;

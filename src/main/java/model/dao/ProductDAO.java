@@ -23,7 +23,7 @@ public class ProductDAO {
 			while (rs.next()) {
 				list.add(new Product(
 						rs.getInt("product_id"),
-						rs.getString("prodcut_name"),
+						rs.getString("product_name"),
 						rs.getInt("stock"),
 						rs.getDouble("price")
 						));
@@ -32,7 +32,29 @@ public class ProductDAO {
 		return list;
 	}
 
-	//商品情報を追加する
+	// 商品IDで単一商品を取得する
+    public Product selectById(int productId) throws Exception {
+        String sql = "SELECT * FROM s_product WHERE product_id = ?";
+        try (Connection con = DbManager.getConnection("mysql");
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setInt(1, productId);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return new Product(
+                            rs.getInt("product_id"),
+                            rs.getString("product_name"),
+                            rs.getInt("stock"),
+                            rs.getDouble("price")
+                    );
+                } else {
+                    return null;
+                }
+            }
+        }
+    }
+    
+	//商品情報を登録する
 	public int insert(Product product) throws Exception {
 		String sql = "INSERT INTO s_product(product_name, stock, price) VALUES (?, ?, ?)";
 
@@ -45,9 +67,9 @@ public class ProductDAO {
 		}
 	}
 
-	//商品在庫を更新する
+	//商品情報を更新する
 	public int update(Product product) throws Exception {
-		String sql = "UPDATE s_product SET product_name=?, stock=?, price=?, WHERE product_id=?";
+		String sql = "UPDATE s_product SET product_name=?, stock=?, price=? WHERE product_id=?";
 
 		try (Connection con = DbManager.getConnection("mysql");
 				PreparedStatement ps = con.prepareStatement(sql)) {
@@ -72,7 +94,7 @@ public class ProductDAO {
 
 	//商品在庫を変動させるメソッド
 	public int updateStock(int productId,int delta) throws Exception {
-		String sql = "UPDATE s_product SET stock + ? WHERE product_id=?";
+		String sql = "UPDATE s_product SET stock = stock + ? WHERE product_id=?";
 
 		try (Connection con = DbManager.getConnection("mysql");
 				PreparedStatement ps = con.prepareStatement(sql)) {

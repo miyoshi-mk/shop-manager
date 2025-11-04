@@ -27,9 +27,14 @@ function deleteProduct(id) {
 <jsp:include page="sidebar.jsp" />
 
 <main class="main-content">
-	<h1>商品管理</h1>
+	<h2>商品一覧</h2>
 	
-	<table border="1" cellpadding="5" cellspacing="0">
+	<!-- 新規登録ボタン -->
+    <div class="table-actions">
+        <a href="${pageContext.request.contextPath}/addProduct" class="btn add-btn">＋ 新規登録</a>
+    </div>
+    
+	 <table class="product-table">
 	    <tr>
 	        <th>ID</th>
 	        <th>商品名</th>
@@ -37,26 +42,26 @@ function deleteProduct(id) {
 	        <th>価格</th>
 	        <th>操作</th>
 	    </tr>
-	<%
-	    ProductDAO dao = new ProductDAO();
-	    List<Product> products = dao.selectAll();
-	    for(Product p : products){
-	        String rowClass = p.getStock() <= 5 ? "low-stock" : "";
-	%>
+		<%
+		    ProductDAO dao = new ProductDAO();
+		    List<Product> products = dao.selectAll();
+		    for(Product p : products){
+		        String rowClass = p.getStock() <= 5 ? "low-stock" : "";
+		%>
 	    <tr class="<%=rowClass%>">
 	        <td><%=p.getProductId()%></td>
 	        <td><%=p.getProductName()%></td>
 	        <td><%=p.getStock()%></td>
 	        <td><%=p.getPrice()%></td>
 	        <td>
-	            <a href="editProduct.jsp?id=<%=p.getProductId()%>">編集</a>
-	            <a href="deleteProduct?id=<%=p.getProductId()%>">削除</a>
+	            <a href="${pageContext.request.contextPath}/editProduct?id=<%=p.getProductId()%>">編集</a>
+	            <a href="${pageContext.request.contextPath}/deleteProduct?id=<%=p.getProductId()%>"
+	               class="link-delete"
+	               onclick="return confirm('本当に削除しますか？');">削除</a>
 	        </td>
 	    </tr>
 	<% } %>
 	</table>
-	
-	<a href="${pageContext.request.contextPath}/addProduct">新規登録</a>
 </main>
 </body>
 </html>
