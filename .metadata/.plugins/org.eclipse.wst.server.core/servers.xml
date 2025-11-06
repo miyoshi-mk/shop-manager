@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<servers>
+  <server auto-publish-setting="2" auto-publish-time="1" configuration-id="/Servers/Tomcat v10.1 サーバー-config" deployDir="wtpwebapps" hostname="localhost" id="Tomcat v10.1 サーバー" name="Tomcat v10.1 サーバー" runtime-id="Tomcat v10.1 サーバー" server-type="org.eclipse.jst.server.tomcat.101" server-type-id="org.eclipse.jst.server.tomcat.101" start-timeout="60" stop-timeout="15" testEnvironment="true" timestamp="1">
+    <list key="modules" value0="shopManager::org.eclipse.jst.jee.server:shopManager::jst.web::6.0"/>
+  </server>
+</servers>

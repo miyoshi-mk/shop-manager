@@ -1,0 +1,316 @@
+@charset "UTF-8";
+
+:root{
+  --primary: #2f3e55;
+  --accent: #4a6078; 
+  --accent-hover: #3b5065;
+  --bg:#f6f8fb;
+  --card-bg:#ffffff;
+  --text:#333;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body{
+  margin:0;
+  font-family: "Noto Sans JP", "Arial", sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+}
+
+/*　＝＝＝＝＝header＝＝＝＝　*/
+.app-header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 56px;
+	background: var(--primary);
+	color: #fff;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 20px;
+	z-index: 1000;
+}
+
+.app-title { 
+	color: #fff;
+	margin: 0;
+	font-size: 1.2rem;
+}
+
+.header-right { 
+	font-size: 0.95rem;
+}
+
+.header-right .logout { 
+	color: #fff;
+	text-decoration: none;
+	margin-left: 12px;
+}
+
+/*　====　sidebar　＝＝＝＝　*/
+.app-sidebar {
+	width: 200px;
+	height: calc(100% - 56px);
+	position: fixed;
+	top: 56px; 
+	left: 0;
+	background: #fff;
+	border-right: 1px solid #e6e9ee;
+	padding: 18px 12px;
+	overflow: auto;
+	z-index: 900;
+}
+.app-sidebar ul {
+	list-style:none;
+	padding:0;
+	margin:0;
+}
+.app-sidebar li {
+	margin:10px 0;
+}
+.app-sidebar a {
+	color:var(--text);
+	text-decoration:none;
+	display:block;
+	padding: 8px 10px;
+	border-radius:6px;
+}
+.app-sidebar a:hover {
+	background:#f0f6ff;
+	color:var(--accent);
+}
+
+/* === form layout === */
+
+.main-content {
+  margin-left: 220px;
+  margin-top: 80px; 
+  padding: 40px;
+  max-width: 900px;
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.main-content h1,
+.main-content h2 {
+  text-align: left;
+  margin: 0 0 18px 0;
+  color: var(--primary);
+  font-size: 1.4rem;
+}
+
+.form-container {
+	background: var(--card-bg);
+	padding: 30px;
+	border-radius: 12px;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.form-container h2 {
+  color: var(--primary);
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="number"],
+.form-group textarea,
+.form-group select {
+	width: 100%;
+	padding: 10px 12px;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	font-size: 1rem;
+	background: #fafafa;
+	transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+	border-color: var(--accent);
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(33,150,243,0.08);
+    background: #fff;
+}
+
+.form-actions {
+	margin-top: 20px;
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+}
+
+button, .btn,
+input[type="submit"] {
+	background: var(--accent);
+	color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+button:hover, .btn:hover,
+input[type="submit"]:hover {
+	background: var(--accent-hover);
+}
+
+a.link-back {
+	display: inline-block;
+    margin-top: 16px;
+    color: var(--accent);
+    text-decoration: none;
+}
+
+a.link-back:hover {
+	text-decoration: underline;
+}
+
+/* === product list layout === */
+.main-content {
+  margin-left: 220px;
+  margin-top: 80px;
+  padding: 40px;
+  max-width: 1000px;
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+.table-actions {
+  width: 100%;
+  text-align: right;
+  margin-bottom: 16px;
+}
+
+.add-btn {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.add-btn:hover {
+  background: var(--accent-hover);
+}
+
+/* === テーブル本体 === */
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border: 1px solid #ccc;
+  table-layout: fixed;
+}
+
+.product-table th,
+.product-table td {
+  border: 1px solid #ccc;
+  padding: 10px 12px;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.product-table th {
+  background-color: #f0f4f8;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* 各列の幅調整 */
+.product-table th:nth-child(1),
+.product-table td:nth-child(1) {
+  width: 8%;   /* ID */
+}
+
+.product-table th:nth-child(2),
+.product-table td:nth-child(2) {
+  width: 40%;  /* 商品名（広め） */
+}
+
+.product-table th:nth-child(3),
+.product-table td:nth-child(3) {
+  width: 15%;  /* 在庫数 */
+}
+
+.product-table th:nth-child(4),
+.product-table td:nth-child(4) {
+  width: 15%;  /* 価格 */
+}
+
+.product-table th:nth-child(5),
+.product-table td:nth-child(5) {
+  width: 22%;  /* 操作ボタン（編集・削除） */
+}
+
+.low-stock {
+  background-color: #ffeaea;
+}
+
+/* 操作リンク */
+.link-edit, .link-delete {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+  margin: 0 6px;
+}
+
+.link-delete {
+  color: #d9534f;
+}
+
+.link-edit:hover, .link-delete:hover {
+  text-decoration: underline;
+}
+
+/* スマホ対応 */
+@media (max-width: 720px) {
+  .main-content {
+    margin-left: 0;
+    padding: 20px;
+    max-width: 100%;
+  }
+
+  .product-table {
+    font-size: 0.9rem;
+  }
+
+  .table-actions {
+    text-align: center;
+  }
+}
+
+@media (max-width: 720px) {
+  .form-main {
+    margin-left: 0;
+    padding: 20px;
+  }
+  .form-actions {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+}
