@@ -14,7 +14,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import model.Customer;
+import model.Order;
 import model.dao.CustomerDAO;
+import model.dao.OrderDAO;
 
 //画面遷移を一元管理するServlet
 @WebServlet("/page")
@@ -50,9 +52,9 @@ public class PageServlet extends HttpServlet {
 
         handlers.put("orderList", req -> {
             try {
-                // OrderDAO dao = new OrderDAO();
-                // List<Order> olist = dao.selectAll();
-                // req.setAttribute("orderList", olist);
+                 OrderDAO dao = new OrderDAO();
+                 List<Order> olist = dao.selectAll();
+                 req.setAttribute("orderList", olist);
             } catch (Exception e) {
                 e.printStackTrace();
                 req.setAttribute("error", "発注一覧の取得中にエラーが発生しました");

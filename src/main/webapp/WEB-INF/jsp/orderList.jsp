@@ -62,8 +62,8 @@ function deleteOrder(id) {
 	        <td><%=o.getStatus()%></td>
 	        <td><%=o.getOrderDate()%></td>
 	        <td>
-	            <a href="updateOrderStatus?id=<%=o.getOrderId()%>&status=発注済">発注済</a>
-	            <a href="updateOrderStatus?id=<%=o.getOrderId()%>&status=入荷済">入荷済</a>
+	            <a href="${pageContext.request.contextPath}/updateOrderStatus?id=<%= o.getOrderId() %>&status=発注済">発注済</a> |
+                <a href="${pageContext.request.contextPath}/updateOrderStatus?id=<%= o.getOrderId() %>&status=入荷済">入荷済</a>
 	        </td>
 	    </tr>
 	<% } %>
