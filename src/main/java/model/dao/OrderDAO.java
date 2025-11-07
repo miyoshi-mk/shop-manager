@@ -9,16 +9,16 @@ import java.util.List;
 import model.Order;
 
 public class OrderDAO {
-	
+
 	//全てのオーダー情報を取得する
 	 public List<Order> selectAll() throws Exception {
 	        List<Order> list = new ArrayList<>();
 	        String sql = "SELECT * FROM s_order";
-	        
-	        try (Connection con = DbManager.getConnection("mysql");
+
+	        try (Connection con = DbManager.getConnection("h2");
 	             PreparedStatement ps = con.prepareStatement(sql);
 	             ResultSet rs = ps.executeQuery()) {
-	            
+
 	        	while (rs.next()) {
 	                list.add(new Order(
 	                    rs.getInt("order_id"),
@@ -34,7 +34,7 @@ public class OrderDAO {
 
 	 public Order selectById(int id) throws Exception {
 		    Connection con = DbManager.getConnection("mysql");
-		    
+
 		    String sql = "SELECT * FROM s_order WHERE product_id=?";
 		    PreparedStatement ps = con.prepareStatement(sql);
 		    ps.setInt(1, id);
@@ -52,7 +52,7 @@ public class OrderDAO {
 		    con.close();
 		    return o;
 		}
-	 
+
 	 //オーダー情報を追加する
 	    public int insert(Order order) throws Exception {
 	        String sql = "INSERT INTO s_order(product_id, quantity, status, order_date) VALUES (?, ?, ?, ?)";

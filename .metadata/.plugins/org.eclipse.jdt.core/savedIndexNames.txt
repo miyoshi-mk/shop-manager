@@ -1,6 +1,2 @@
 INDEX VERSION 1.134+C:\ShopManager\.metadata\.plugins\org.eclipse.jdt.core
-2165302188.index
-1613479210.index
 1865797976.index
-3638123688.index
-1163167691.index

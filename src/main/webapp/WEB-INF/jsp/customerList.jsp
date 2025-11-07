@@ -18,7 +18,7 @@
 	<h2>顧客一覧</h2>
 	<a href="${pageContext.request.contextPath}/add-customer">新規登録</a>
 	<c:if test="${not empty customerList}">
-	<table border="1" cellpadding="5" cellspacing="0">
+	<table class="product-table">
         <thead>
             <tr>
                 <th>ID</th>

@@ -2,7 +2,7 @@
 
 :root{
   --primary: #2f3e55;
-  --accent: #4a6078; 
+  --accent: #4a6078;
   --accent-hover: #3b5065;
   --bg:#f6f8fb;
   --card-bg:#ffffff;
@@ -37,17 +37,17 @@ body{
 	z-index: 1000;
 }
 
-.app-title { 
+.app-title {
 	color: #fff;
 	margin: 0;
 	font-size: 1.2rem;
 }
 
-.header-right { 
+.header-right {
 	font-size: 0.95rem;
 }
 
-.header-right .logout { 
+.header-right .logout {
 	color: #fff;
 	text-decoration: none;
 	margin-left: 12px;
@@ -58,7 +58,7 @@ body{
 	width: 200px;
 	height: calc(100% - 56px);
 	position: fixed;
-	top: 56px; 
+	top: 56px;
 	left: 0;
 	background: #fff;
 	border-right: 1px solid #e6e9ee;
@@ -90,7 +90,7 @@ body{
 
 .main-content {
   margin-left: 220px;
-  margin-top: 80px; 
+  margin-top: 80px;
   padding: 40px;
   max-width: 900px;
   background: var(--card-bg);
@@ -186,7 +186,7 @@ a.link-back:hover {
 	text-decoration: underline;
 }
 
-/* === product list layout === */
+/* === 商品一覧 === */
 .main-content {
   margin-left: 220px;
   margin-top: 80px;

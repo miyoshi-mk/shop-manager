@@ -16,8 +16,8 @@ public class ProductDAO {
 		List<Product> list = new ArrayList<>();
 		//SQL文を設定する
 		String sql = "SELECT * FROM s_product";
-		
-		try (Connection con = DbManager.getConnection("mysql");
+
+		try (Connection con = DbManager.getConnection("h2");
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				ResultSet rs = pstmt.executeQuery()) {
 			while (rs.next()) {
@@ -53,7 +53,7 @@ public class ProductDAO {
             }
         }
     }
-    
+
 	//商品情報を登録する
 	public int insert(Product product) throws Exception {
 		String sql = "INSERT INTO s_product(product_name, stock, price) VALUES (?, ?, ?)";
