@@ -15,7 +15,7 @@ public class OrderDAO {
 	        List<Order> list = new ArrayList<>();
 	        String sql = "SELECT * FROM s_order";
 
-	        try (Connection con = DbManager.getConnection("h2");
+	        try (Connection con = DbManager.getConnection("mysql");
 	             PreparedStatement ps = con.prepareStatement(sql);
 	             ResultSet rs = ps.executeQuery()) {
 

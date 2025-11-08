@@ -17,7 +17,7 @@ public class ProductDAO {
 		//SQL文を設定する
 		String sql = "SELECT * FROM s_product";
 
-		try (Connection con = DbManager.getConnection("h2");
+		try (Connection con = DbManager.getConnection("mysql");
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				ResultSet rs = pstmt.executeQuery()) {
 			while (rs.next()) {

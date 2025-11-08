@@ -86,6 +86,69 @@ body{
 	color:var(--accent);
 }
 
+/* === Login === */
+.loginpage body {
+	font-family: "Yu Gothic", sans-serif;
+	background-color: #f5f7fa;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	margin: 0;
+}
+.login-container {
+    background: #fff;
+    padding: 40px 50px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 320px;
+    text-align: center;
+}
+.loginpage h2 {
+    margin-bottom: 25px;
+    color: #333;
+}
+
+.loginpage label {
+    display: block;
+    text-align: left;
+    margin: 10px 0 5px;
+    color: #555;
+}
+
+.loginpage input[type="text"],
+.loginpage input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.loginpage input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #4A90E2;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.loginpage input[type="submit"]:hover {
+    background-color: #357ABD;
+}
+
+.loginpage .error {
+    color: #e74c3c;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
 /* === form layout === */
 
 .main-content {
