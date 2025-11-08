@@ -35,14 +35,14 @@ public class OrderDAO {
 	 public Order selectById(int id) throws Exception {
 		    Connection con = DbManager.getConnection("mysql");
 
-		    String sql = "SELECT * FROM s_order WHERE product_id=?";
+		    String sql = "SELECT * FROM s_order WHERE order_id=?";
 		    PreparedStatement ps = con.prepareStatement(sql);
 		    ps.setInt(1, id);
 		    ResultSet rs = ps.executeQuery();
 		    Order o = null;
 		    if(rs.next()) {
 		        o = new Order();
-		        o.setOrderId(rs.getInt("id"));
+		        o.setOrderId(rs.getInt("order_id"));
 		        o.setProductId(rs.getInt("product_id"));
 		        o.setQuantity(rs.getInt("quantity"));
 		        o.setStatus(rs.getString("status"));

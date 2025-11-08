@@ -86,67 +86,72 @@ body{
 	color:var(--accent);
 }
 
-/* === Login === */
-.loginpage body {
-	font-family: "Yu Gothic", sans-serif;
-	background-color: #f5f7fa;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-	margin: 0;
+/* === Login/register共通 === */
+.loginpage{
+	display:flex;
+	align-items:center; 
+	justify-content:center; 
+	min-height:100vh;
+    background: linear-gradient(180deg, #f7fbff 0%, #eef7f8 100%);
+    font-family:"Noto Sans JP", "Helvetica Neue", sans-serif; margin:0;
 }
-.login-container {
-    background: #fff;
-    padding: 40px 50px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    width: 320px;
-    text-align: center;
-}
-.loginpage h2 {
-    margin-bottom: 25px;
-    color: #333;
+.login-container{
+    width:380px; 
+	padding:44px; 
+	border-radius:16px; 
+	background:#ffffff;
+    box-shadow: 0 12px 30px rgba(34,50,80,0.08);
+    text-align:center; 
+	border: 1px solid rgba(74,96,120,0.06);
 }
 
-.loginpage label {
-    display: block;
-    text-align: left;
-    margin: 10px 0 5px;
-    color: #555;
+.loginpage h2{ 
+	color:#334155; 
+	font-size:1.5rem; 
+	margin-bottom:18px;
+}
+.loginpage label{ 
+	display:block; 
+	text-align:left; 
+	margin:8px 0 6px; 
+	color:#596173; 
+	font-weight:500;
+}
+.loginpage input[type="text"], .loginpage input[type="password"]{
+	width:100%; 
+	padding:12px; 
+	border-radius:10px; 
+	border:1px solid #e6eef6; 
+	margin-bottom:12px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
 }
 
-.loginpage input[type="text"],
-.loginpage input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    box-sizing: border-box;
-    margin-bottom: 15px;
-    font-size: 14px;
+.loginpage input[type="submit"]{
+	width:100%; 
+	padding:12px; 
+	border-radius:10px; 
+	border:none; 
+	font-weight:700;
+    background: linear-gradient(90deg,#6fb3ff,#4a90e2); 
+	color:#fff; 
+	box-shadow:0 8px 18px rgba(74,96,120,0.12);
 }
-
-.loginpage input[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    background-color: #4A90E2;
-    border: none;
-    color: white;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 15px;
-    transition: background-color 0.3s ease;
-}
-
-.loginpage input[type="submit"]:hover {
-    background-color: #357ABD;
+.loginpage a{ 
+	display:inline-block; 
+	margin-top:12px; 
+	color:#4a90e2; 
 }
 
 .loginpage .error {
-    color: #e74c3c;
-    margin-top: 10px;
-    font-size: 14px;
+	color: #e74c3c;
+	margin-top: 10px;
+	font-size: 14px;
+}
+
+.loginpage .message {
+	color: green;
+	font-weight: bold;
+	margin-top: 10px;
 }
 
 /* === form layout === */

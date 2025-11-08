@@ -64,6 +64,8 @@ public class AddOrderServlet extends HttpServlet {
         o.setQuantity(quantity);
         o.setStatus(status);
 
+        o.setOrderDate(new java.sql.Timestamp(System.currentTimeMillis()));
+        
         try {
             orderDao.insert(o);
             request.setAttribute("message", "発注を登録しました。");

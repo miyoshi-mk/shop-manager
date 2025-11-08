@@ -2,6 +2,7 @@ package control;
 
 import java.io.IOException;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -28,12 +29,16 @@ public class LoginServlet extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
+		 //  登録直後のリダイレクトかチェック
+	    String registered = request.getParameter("registered");
+	    if ("true".equals(registered)) {
+	        request.setAttribute("message", "ユーザー登録が完了しました。ログインしてください。");
+	    }
+
+	    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
+	    dispatcher.forward(request, response);
 	}
 
 	@Override

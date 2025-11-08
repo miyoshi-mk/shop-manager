@@ -19,6 +19,7 @@
         
         <a href="${pageContext.request.contextPath}/user-insert">新規ユーザー登録</a>
     </form>
+    <p class="message">${message}</p>
     <p class="error">${error}</p>
 </div>
 </body>

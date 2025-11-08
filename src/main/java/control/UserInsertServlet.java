@@ -33,9 +33,7 @@ public class UserInsertServlet extends HttpServlet {
         dispatcher.forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		request.setCharacterEncoding("UTF-8");
@@ -48,7 +46,7 @@ public class UserInsertServlet extends HttpServlet {
 
 			if (success) {
 				// 登録成功 → ログインページへリダイレクト
-				response.sendRedirect(request.getContextPath() + "/login.jsp");
+				response.sendRedirect(request.getContextPath() + "/login?registered=true");
 			} else {
 				// 登録失敗 → エラーメッセージ表示
 				request.setAttribute("error", "登録に失敗しました。ユーザー名が重複していませんか？");
