@@ -27,7 +27,7 @@ function deleteOrder(id) {
 <main class="main-content">
 	<h2>発注管理</h2>
 	
-	<table border="1" cellpadding="5" cellspacing="0">
+	<table class="order-table">
 	    <tr>
 	        <th>注文ID</th>
 	        <th>商品ID</th>
@@ -55,7 +55,7 @@ function deleteOrder(id) {
 	                rowClass = "";
 	        }
 	%>
-	    <tr class="<%=rowClass%>">
+	    <tr>
 	        <td><%=o.getOrderId()%></td>
 	        <td><%=o.getProductId()%></td>
 	        <td><%=o.getQuantity()%></td>

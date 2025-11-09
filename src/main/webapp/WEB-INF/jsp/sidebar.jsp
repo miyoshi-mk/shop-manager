@@ -5,6 +5,7 @@
         <li><a href="${pageContext.request.contextPath}/dashboard">ダッシュボード</a></li>
         <li><a href="${pageContext.request.contextPath}/page?name=productList">商品管理</a></li>
         <li><a href="${pageContext.request.contextPath}/page?name=orderList">発注管理</a></li>
+        <li><a href="${pageContext.request.contextPath}/page?name=salesList">売上管理</a><li>
         <li><a href="${pageContext.request.contextPath}/page?name=customerList">顧客管理</a></li>
     </ul>
 </nav>

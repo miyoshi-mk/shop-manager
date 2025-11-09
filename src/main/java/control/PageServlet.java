@@ -15,8 +15,10 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import model.Customer;
 import model.Order;
+import model.Sales;
 import model.dao.CustomerDAO;
 import model.dao.OrderDAO;
+import model.dao.SalesDAO;
 
 //画面遷移を一元管理するServlet
 @WebServlet("/page")
@@ -60,6 +62,17 @@ public class PageServlet extends HttpServlet {
                 req.setAttribute("error", "発注一覧の取得中にエラーが発生しました");
             }
         });
+        
+        handlers.put("salesList", req -> {
+            try {
+                 SalesDAO dao = new SalesDAO();
+                 List<Sales> slist = dao.selectAll();
+                 req.setAttribute("salesList", slist);
+            } catch (Exception e) {
+                e.printStackTrace();
+                req.setAttribute("error", "発注一覧の取得中にエラーが発生しました");
+            }
+        });
 
     }
 
@@ -81,6 +94,9 @@ public class PageServlet extends HttpServlet {
 			break;
 		case "customerList":
 			path += "customerList.jsp";
+			break;
+		case "salesList":
+			path += "salesList.jsp";
 			break;
 		default:
 			path += "dashboard.jsp";

@@ -1,7 +1,7 @@
 package model;
 import java.io.Serializable;
 
-//商品管理用クラス
+//商品情報クラス
 public class Product implements Serializable{
 
 	//フィールド

@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 
+//ユーザーアカウントクラス
 public class User implements Serializable {
 
 	//フィールド

@@ -355,6 +355,23 @@ a.link-back:hover {
   text-decoration: underline;
 }
 
+.product-table,
+.sales-table {
+	border-collapse: collapse; 
+	width: 100%; 
+	background: #fff; 
+}
+.product-table,
+.sale-table th,td {
+	border: 1px solid #ccc; 
+	padding: 8px 10px; 
+	text-align: left;
+}
+.product-table,
+.sales-table th { 
+	background: #f0f0f0; 
+}
+
 /* スマホ対応 */
 @media (max-width: 720px) {
   .main-content {

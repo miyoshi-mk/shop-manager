@@ -54,7 +54,7 @@
      		 </div>
 		</form>
 	
-		<a href="${pageContext.request.contextPath}/page?name=orderList">発注一覧に戻る</a></p>
+		<a href="${pageContext.request.contextPath}/page?name=orderList">発注一覧に戻る</a>
 	</div>
 </main>
 </body>

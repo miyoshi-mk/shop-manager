@@ -3,7 +3,7 @@ package model;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-//オーダー用クラス
+//発注情報クラス
 public class Order implements Serializable {
 		
 	//フィールド
