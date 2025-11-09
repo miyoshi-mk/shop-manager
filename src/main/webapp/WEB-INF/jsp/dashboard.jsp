@@ -36,9 +36,26 @@
     	</div>
   	</div>
   	
-  	<section class="chart-area">
-    	<canvas id="dashboardChart" width="800" height="300"></canvas>
-  	</section>
+  	<div class="dashboard">
+		  <!-- 全体指標 棒グラフ -->
+		  <div class="overall-chart">
+		    <h3>全体指標</h3>
+		    <canvas id="overallChart"></canvas>
+		  </div>
+		  
+		  <!-- 商品別＆月別チャート -->
+		  <div class="charts">
+		    <div class="chart-container">
+		      <h3>商品別売上</h3>
+		      <canvas id="productSalesChart"></canvas>
+		    </div>
+		
+		    <div class="chart-container">
+		      <h3>月別売上推移</h3>
+		      <canvas id="monthlySalesChart"></canvas>
+		    </div>
+		  </div>
+	</div>
 </main>
 	
 <script>
@@ -47,48 +64,57 @@
   const totalStock = Number('${totalStock}');
   const totalOrders = Number('${totalOrders}');
   const totalSales = Number('${totalSales}');
+//商品別売上データ
+  const productNames = ${productLabelsJson};
+  const productSales = ${productSalesJson};
+  const monthlyLabels = ${monthLabelsJson};
+  const monthlyValues = ${monthValuesJson};
 
-  const ctx = document.getElementById('dashboardChart').getContext('2d');
-  new Chart(ctx, {
+//棒グラフ（全体指標）
+   new Chart(document.getElementById('overallChart').getContext('2d'), {
     type: 'bar',
     data: {
-      labels: ['商品数', '在庫数', '発注件数', '総売上'],
-      datasets: [
-        {
-          label: '数量',
-          data: [totalProducts, totalStock, totalOrders, 0], 
-          backgroundColor: ['#4caf50', '#2196f3', '#ff9800', 'transparent'],
-          yAxisID: 'y-left'
-        },
-        {
-          label: '総売上',
-          data: [0, 0, 0, totalSales], 
-          backgroundColor: '#AF504C',
-          yAxisID: 'y-right'
-        }
-      ]
+      labels: ['商品数','在庫数','発注件数','総売上(円)'],
+      datasets:[{
+        label:'数量/金額',
+        data:[totalProducts,totalStock,totalOrders,totalSales],
+        backgroundColor:['#2563eb','#3b82f6','#60a5fa','#93c5fd']
+      }]
     },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-        'y-left': {
-          type: 'linear',
-          position: 'left',
-          beginAtZero: true,
-          title: { display: true, text: '数量' }
-        },
-        'y-right': {
-          type: 'linear',
-          position: 'right',
-          beginAtZero: true,
-          title: { display: true, text: '売上（円）' },
-          grid: { drawOnChartArea: false } 
-        }
-      }
-    }
+    options:{ responsive:true, plugins:{ legend:{display:false} }, scales:{ y:{ beginAtZero:true, title:{ display:true, text:'数量・金額' } } } }
   });
-})();
+
+
+  // 円グラフ（商品別売上）
+  new Chart(document.getElementById('productSalesChart').getContext('2d'), {
+    type:'doughnut',
+    data:{ labels:productNames, datasets:[{ data:productSales, backgroundColor:['#2563eb','#1e3a8a','#475569','#64748b','#94a3b8'] }] },
+    options:{ 
+        responsive:true, 
+        plugins:{ 
+            legend:{ 
+                position:'right', 
+                labels: { 
+                    font: { 
+                        size: 7 
+                    }, 
+                    color: '#333', 
+                    boxWidth: 14 
+                } 
+            },
+            title: { display: false }
+       }
+    }
+ });
+
+
+  // --- 折れ線グラフ（月別売上推移） ---
+  new Chart(document.getElementById('monthlySalesChart').getContext('2d'), {
+	    type:'line',
+	    data:{ labels:monthlyLabels, datasets:[{ label:'売上推移', data:monthlyValues, borderColor:'#2563eb', tension:0.3, fill:false }] },
+	    options:{ responsive:true, plugins:{ legend:{ display:false } }, scales:{ y:{ beginAtZero:true, title:{ display:true, text:'売上(円)' } } } }
+	  });
+	})();
 </script>
 </body>
 </html>

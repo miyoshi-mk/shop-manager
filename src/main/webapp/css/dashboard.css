@@ -27,14 +27,14 @@ h2 {
 /* summary cards */
 .summary{
 	display:flex;
-	gap:16px;
-	margin-bottom:20px;
+	gap:20px;
+	margin-bottom:40px;
 	flex-wrap:wrap;
 }
 .card {
   background:var(--card-bg);
-  padding:16px;
-  border-radius:10px;
+  padding:20px;
+  border-radius:8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
   text-align: center;
   min-width:160px;
@@ -49,35 +49,54 @@ h2 {
 	color: var(--accent);
 }
 
-/* chart area */
-.chart-area {
-	background:var(--card-bg);
-	border-radius: 10px;
-	padding: 20px;
-	box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-	height: 360px;
-}
-
-.info-board {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 15px;
-    margin-bottom: 30px;
-    width: 300px;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-}
-
-.info-board p {
-    margin: 5px 0;
-    font-weight: bold;
-    color: #555;
-}
-
+.dashboard {
+   display: flex;
+   flex-direction: column;
+   gap: 60px;
+   margin-top: 20px;
+ }
+ .overall-chart {
+   width: 90%;
+   margin: 0 auto;
+   height: 300px;
+   background: #ffffff;
+   border-radius: 10px;
+   padding: 20px;
+   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+ }
+ 
+ .charts {
+     display: flex;
+     justify-content: space-between;
+     gap: 20px;
+	 flex-wrap: wrap;
+ }
+   .chart-container {
+     flex:1;
+     height:300px;
+	 min-width: 300px;
+	 background: #ffffff;
+	 border-radius: 10px;
+	 padding: 20px;
+	 box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+ }
+ 
 canvas {
+	width: 100% !important;
+	height: 100% !important;
     background-color: #fff;
     border: 1px solid #ddd;
     padding: 10px;
 }
-.summary .card {
-	text-align:center; 
-}
+
+@media (max-width: 900px) {
+    main {
+      margin-left: 0;
+    }
+    .charts {
+      flex-direction: column; /* スマホでは縦並び */
+    }
+    .chart-container {
+      height: 250px;
+    }
+  }
