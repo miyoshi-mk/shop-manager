@@ -254,7 +254,7 @@ a.link-back:hover {
 	text-decoration: underline;
 }
 
-/* === 商品一覧 === */
+/* === 各一覧ページ === */
 .main-content {
   margin-left: 220px;
   margin-top: 80px;
@@ -287,7 +287,9 @@ a.link-back:hover {
 }
 
 /* === テーブル本体 === */
-.product-table {
+.product-table, .order-table, 
+.customer-table, .product-table, 
+.sales-table  {
   width: 100%;
   border-collapse: collapse;
   background: #fff;
@@ -296,14 +298,24 @@ a.link-back:hover {
 }
 
 .product-table th,
-.product-table td {
+.product-table td{
   border: 1px solid #ccc;
   padding: 10px 12px;
   text-align: center;
   word-wrap: break-word;
 }
+.order-table th, .customer-table th,
+.sales-table th,
+.order-table td, .customer-table td,
+.sales-table td {
+	border: 1px solid #ccc; 
+	padding: 10px 12px;
+	text-align: left;
+}
 
-.product-table th {
+.product-table th, .order-table th, 
+.customer-table th, .product-table th, 
+.sales-table th {
   background-color: #f0f4f8;
   color: var(--primary);
   font-weight: 600;
@@ -317,7 +329,7 @@ a.link-back:hover {
 
 .product-table th:nth-child(2),
 .product-table td:nth-child(2) {
-  width: 40%;  /* 商品名（広め） */
+  width: 40%;  /* 商品名 */
 }
 
 .product-table th:nth-child(3),
@@ -334,6 +346,36 @@ a.link-back:hover {
 .product-table td:nth-child(5) {
   width: 22%;  /* 操作ボタン（編集・削除） */
 }
+
+.customer-table th:nth-child(1),
+.customer-table td:nth-child(1) {
+  width: 5%;   /* ID */
+}
+
+.customer-table th:nth-child(2),
+.customer-table td:nth-child(2) {
+  width: 12%;  /* 名前 */
+}
+
+.customer-table th:nth-child(3),
+.customer-table td:nth-child(3) {
+  width: 23%;  /* Email */
+}
+
+.customer-table th:nth-child(4),
+.customer-table td:nth-child(4) {
+  width: 15%;  /* 電話番号 */
+}
+
+.customer-table th:nth-child(5),
+.customer-table td:nth-child(5) {
+  width: 25%;  /* 住所 */
+}
+.customer-table th:nth-child(6),
+.customer-table td:nth-child(6) {
+  width: 20%;  /* 登録日時 */
+}
+
 
 .low-stock {
   background-color: #ffeaea;
@@ -353,23 +395,6 @@ a.link-back:hover {
 
 .link-edit:hover, .link-delete:hover {
   text-decoration: underline;
-}
-
-.product-table,
-.sales-table {
-	border-collapse: collapse; 
-	width: 100%; 
-	background: #fff; 
-}
-.product-table,
-.sale-table th,td {
-	border: 1px solid #ccc; 
-	padding: 8px 10px; 
-	text-align: left;
-}
-.product-table,
-.sales-table th { 
-	background: #f0f0f0; 
 }
 
 /* スマホ対応 */
