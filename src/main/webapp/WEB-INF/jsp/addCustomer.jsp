@@ -27,8 +27,13 @@
 			    <input type="text" name="phone"><br>
 		    </div>
 		    <div class="form-group">
+			    <label>郵便番号：</label><br>
+			    <input type="text" id="zipcode" name="zipcode" maxlength="8" placeholder="例：100-0001 または 1000001">
+			    <button type="button" id="searchBtn">検索</button><br>
+		    </div>
+		    <div class="form-group">
 			    <label>住所：</label><br>
-			    <textarea name="address" rows="3" cols="30"></textarea><br>
+			    <textarea id="address" name="address" rows="3" cols="30"></textarea><br>
 		    </div>
 		     <div class="form-actions">
 		    	<button type="submit">登録</button>
@@ -39,5 +44,69 @@
 </main>
 <p style="color:red;">${error}</p>
 <a href="${pageContext.request.contextPath}/customerList">顧客一覧へ戻る</a>
+
+<script>
+(function(){
+  document.addEventListener("DOMContentLoaded", function(){
+    console.log("DOMContentLoaded - script loaded");
+
+    const btn = document.getElementById("searchBtn");
+    const zipcodeInput = document.getElementById("zipcode");
+    const addressField = document.getElementById("address");
+
+    if(!btn || !zipcodeInput || !addressField){
+      console.error("必要な要素が見つかりませんでした:", {btn, zipcodeInput, addressField});
+      return;
+    }
+
+    btn.addEventListener("click", async function(e){
+      try {
+        console.log("検索ボタンクリック");
+        let zipcode = zipcodeInput.value.trim();
+        if(zipcode === ""){
+          alert("郵便番号を入力してください。");
+          return;
+        }
+
+        zipcode = zipcode.replace(/\D/g, "");
+        console.log("整形後のzipcode:", zipcode);
+
+        if(zipcode.length !== 7){
+          alert("郵便番号は7桁で入力してください（例：1000001）。");
+          return;
+        }
+
+        const url = "https://zipcloud.ibsnet.co.jp/api/search?zipcode=" + zipcode;
+        console.log("fetch開始:", url);
+        const resp = await fetch(url);
+        console.log("fetch終了, status:", resp.status);
+
+        if(!resp.ok){
+          console.error("HTTPエラー:", resp.status);
+          alert("住所検索に失敗しました（HTTPエラー）。");
+          return;
+        }
+
+        const data = await resp.json();
+        console.log("API応答:", data);
+
+        if(data && data.results && data.results.length > 0){
+          const r = data.results[0];
+          const full = (r.address1 || "") + (r.address2 || "") + (r.address3 || "");
+          addressField.value = full;
+          console.log("住所セット:", full);
+        } else {
+          console.warn("住所が見つかりませんでした。API結果:", data);
+          alert("住所が見つかりませんでした。");
+        }
+      } catch(err) {
+        console.error("郵便番号検索で例外:", err);
+        alert("住所検索中にエラーが発生しました。コンソールを確認してください。");
+      }
+    }); // btn click
+  }); // DOMContentLoaded
+})();
+</script>
+
 </body>
 </html>
