@@ -51,7 +51,7 @@
 		    </div>
 		
 		    <div class="chart-container">
-		      <h3>月別売上推移</h3>
+		      <h3>週別売上推移</h3>
 		      <canvas id="monthlySalesChart"></canvas>
 		    </div>
 		  </div>
@@ -64,57 +64,103 @@
   const totalStock = Number('${totalStock}');
   const totalOrders = Number('${totalOrders}');
   const totalSales = Number('${totalSales}');
-//商品別売上データ
+  // 商品別売上データ
   const productNames = ${productLabelsJson};
   const productSales = ${productSalesJson};
-  const monthlyLabels = ${monthLabelsJson};
-  const monthlyValues = ${monthValuesJson};
+  const weeklyLabels = ${weekLabelsJson};
+  const weeklyValues = ${weekValuesJson};
 
 //棒グラフ（全体指標）
-   new Chart(document.getElementById('overallChart').getContext('2d'), {
+  new Chart(document.getElementById('overallChart').getContext('2d'), {
     type: 'bar',
     data: {
       labels: ['商品数','在庫数','発注件数','総売上(円)'],
-      datasets:[{
-        label:'数量/金額',
-        data:[totalProducts,totalStock,totalOrders,totalSales],
-        backgroundColor:['#2563eb','#3b82f6','#60a5fa','#93c5fd']
-      }]
+      datasets: [
+        {
+          label: '数量',
+          data: [totalProducts, totalStock, totalOrders, null],
+          backgroundColor: ['#2563eb','#3b82f6','#60a5fa','#ffffff00'],
+          yAxisID: 'y1'
+        },
+        {
+          label: '売上(円)',
+          data: [null, null, null, totalSales],
+          backgroundColor: ['#93c5fd'],
+          yAxisID: 'y2'
+        }
+      ]
     },
-    options:{ responsive:true, plugins:{ legend:{display:false} }, scales:{ y:{ beginAtZero:true, title:{ display:true, text:'数量・金額' } } } }
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { display: true } },
+      scales: {
+        y1: {
+          type: 'linear',
+          position: 'left',
+          beginAtZero: true,
+          title: { display: true, text: '数量' }
+        },
+        y2: {
+          type: 'linear',
+          position: 'right',
+          beginAtZero: true,
+          title: { display: true, text: '売上(円)' },
+          grid: { drawOnChartArea: false }
+        }
+      }
+    }
   });
-
-
-  // 円グラフ（商品別売上）
+  
+//円グラフ（商品別売上）
   new Chart(document.getElementById('productSalesChart').getContext('2d'), {
     type:'doughnut',
-    data:{ labels:productNames, datasets:[{ data:productSales, backgroundColor:['#2563eb','#1e3a8a','#475569','#64748b','#94a3b8'] }] },
-    options:{ 
-        responsive:true, 
-        plugins:{ 
-            legend:{ 
-                position:'right', 
-                labels: { 
-                    font: { 
-                        size: 7 
-                    }, 
-                    color: '#333', 
-                    boxWidth: 14 
-                } 
-            },
-            title: { display: false }
-       }
+    data:{
+      labels: productNames,
+      datasets:[{
+        data: productSales,
+        backgroundColor: ['#2563eb','#1e3a8a','#475569','#64748b','#94a3b8','#cbd5e1','#e2e8f0']
+      }]
+    },
+    options:{
+      responsive:true,
+      maintainAspectRatio: false,
+      plugins:{
+        legend:{
+          position:'right',
+          labels: {
+            font: { size: 8 },
+            color: '#333',
+            boxWidth: 12
+          }
+        }
+      }
     }
- });
+  });
 
-
-  // --- 折れ線グラフ（月別売上推移） ---
+//折れ線グラフ（週別売上推移） -- ここは weeklyLabels を使う
   new Chart(document.getElementById('monthlySalesChart').getContext('2d'), {
-	    type:'line',
-	    data:{ labels:monthlyLabels, datasets:[{ label:'売上推移', data:monthlyValues, borderColor:'#2563eb', tension:0.3, fill:false }] },
-	    options:{ responsive:true, plugins:{ legend:{ display:false } }, scales:{ y:{ beginAtZero:true, title:{ display:true, text:'売上(円)' } } } }
-	  });
-	})();
+    type:'line',
+    data:{
+      labels: weeklyLabels,
+      datasets:[
+        {
+          label:'週別売上',
+          data: weeklyValues,
+          borderColor:'#2563eb',
+          tension:0.3,
+          fill:false
+        }
+      ]
+    },
+    options:{
+      responsive:true,
+      maintainAspectRatio: false,
+      plugins:{ legend:{ display:false } },
+      scales:{ y:{ beginAtZero:true, title:{ display:true, text:'売上(円)' } } }
+    }
+  });
+})();
 </script>
 </body>
 </html>

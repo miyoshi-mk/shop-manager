@@ -2,10 +2,11 @@ package control;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.YearMonth;
 import java.time.ZoneId;
+import java.time.temporal.WeekFields;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -43,47 +44,51 @@ public class DashboardServlet extends HttpServlet {
 			int totalStock = products.stream().mapToInt(Product::getStock).sum();
 			int totalOrders = orders.size();
 
-			// --- 商品ID → Product のマップ ---
 			Map<Integer, Product> productMap = products.stream()
 					.collect(Collectors.toMap(Product::getProductId, p -> p));
 
 			// --- 売上集計 ---
 			int totalSales = 0;
-			Map<Integer, Integer> salesMap = new LinkedHashMap<>(); // 商品別売上
-			Map<YearMonth, Integer> monthlySales = new LinkedHashMap<>(); // 月別売上
+			Map<Integer, Integer> salesMap = new LinkedHashMap<>();
+			Map<String, Integer> weeklySales = new LinkedHashMap<>(); // 週別売上
 
 			for (Order o : orders) {
 				Product p = productMap.get(o.getProductId());
-				if (p != null) {
+				if (p != null && o.getOrderDate() != null) {
 					int sale = (int) (p.getPrice() * o.getQuantity());
 					totalSales += sale;
 
 					// 商品別売上
 					salesMap.put(o.getProductId(), salesMap.getOrDefault(o.getProductId(), 0) + sale);
 
-					// 月別売上
-					if (o.getOrderDate() != null) {
-						LocalDate date = o.getOrderDate().toInstant()
-								.atZone(ZoneId.systemDefault())
-								.toLocalDate();
-						YearMonth ym = YearMonth.from(date);
-						monthlySales.put(ym, monthlySales.getOrDefault(ym, 0) + sale);
-					}
+					// 週別売上
+					LocalDate date = o.getOrderDate().toInstant()
+							.atZone(ZoneId.systemDefault())
+							.toLocalDate();
+					// 年+週番号（例: 2025-W45）
+					WeekFields wf = WeekFields.of(Locale.getDefault());
+					int weekNumber = date.get(wf.weekOfWeekBasedYear());
+					String yearWeek = date.getYear() + "-W" + String.format("%02d", weekNumber);
+					weeklySales.put(yearWeek, weeklySales.getOrDefault(yearWeek, 0) + sale);
 				}
 			}
 
 			// --- Chart.js 用にデータを整形 ---
-			String productLabelsJson = "[" + products.stream()
+			List<Product> soldProducts = products.stream()
+					.filter(p -> salesMap.getOrDefault(p.getProductId(), 0) > 0)
+					.collect(Collectors.toList());
+
+			String productLabelsJson = "[" + soldProducts.stream()
 					.map(p -> "\"" + p.getProductName() + "\"")
 					.collect(Collectors.joining(",")) + "]";
-			String productSalesJson = "[" + products.stream()
+			String productSalesJson = "[" + soldProducts.stream()
 					.map(p -> String.valueOf(salesMap.getOrDefault(p.getProductId(), 0)))
 					.collect(Collectors.joining(",")) + "]";
 
-			String monthLabelsJson = "[" + monthlySales.keySet().stream()
-					.map(ym -> "\"" + ym.toString() + "\"")
+			String weekLabelsJson = "[" + weeklySales.keySet().stream()
+					.map(w -> "\"" + w + "\"")
 					.collect(Collectors.joining(",")) + "]";
-			String monthValuesJson = "[" + monthlySales.values().stream()
+			String weekValuesJson = "[" + weeklySales.values().stream()
 					.map(String::valueOf)
 					.collect(Collectors.joining(",")) + "]";
 
@@ -94,8 +99,8 @@ public class DashboardServlet extends HttpServlet {
 			request.setAttribute("totalSales", totalSales);
 			request.setAttribute("productLabelsJson", productLabelsJson);
 			request.setAttribute("productSalesJson", productSalesJson);
-			request.setAttribute("monthLabelsJson", monthLabelsJson);
-			request.setAttribute("monthValuesJson", monthValuesJson);
+			request.setAttribute("weekLabelsJson", weekLabelsJson);
+			request.setAttribute("weekValuesJson", weekValuesJson);
 
 			request.getRequestDispatcher("/WEB-INF/jsp/dashboard.jsp").forward(request, response);
 
