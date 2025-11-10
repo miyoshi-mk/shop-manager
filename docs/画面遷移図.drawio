@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="RDJfu2QgH4j_SlTojby0" name="ページ1">
-        <mxGraphModel dx="1472" dy="1559" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1947" dy="1559" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -96,15 +96,6 @@
                 </mxCell>
                 <mxCell id="32" value="ログアウト" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="-110" y="80" width="90" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="33" value="" style="endArrow=classic;html=1;" parent="1" edge="1">
-                    <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="-360" y="190" as="sourcePoint"/>
-                        <mxPoint x="-220" y="190" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="34" value="リクエスト" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="-330" y="190" width="80" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="35" value="新規ユーザー登録" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
                     <mxGeometry x="-220" y="270" width="120" height="60" as="geometry"/>
