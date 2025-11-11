@@ -15,7 +15,7 @@ public class SalesDAO {
 	public int insertSale(Sales s) throws Exception {
         String sql = "INSERT INTO sales (product_id, customer_id, quantity, remarks) VALUES (?, ?, ?, ?)";
 
-        try (Connection con = DbManager.getConnection("mysql")) {
+        try (Connection con = DbManager.getConnection("h2")) {
             con.setAutoCommit(false); // トランザクション開始
             int result = 0;
 
@@ -48,7 +48,7 @@ public class SalesDAO {
         List<Sales> list = new ArrayList<>();
         String sql = "SELECT * FROM sales ORDER BY sale_id DESC";
 
-        try (Connection con = DbManager.getConnection("mysql");
+        try (Connection con = DbManager.getConnection("h2");
              PreparedStatement ps = con.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
 
@@ -66,5 +66,5 @@ public class SalesDAO {
         }
         return list;
     }
-	
+
 }

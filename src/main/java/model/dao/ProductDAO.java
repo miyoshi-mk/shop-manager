@@ -17,7 +17,7 @@ public class ProductDAO {
 		//SQL文を設定する
 		String sql = "SELECT * FROM s_product";
 
-		try (Connection con = DbManager.getConnection("mysql");
+		try (Connection con = DbManager.getConnection("h2");
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				ResultSet rs = pstmt.executeQuery()) {
 			while (rs.next()) {
@@ -35,7 +35,7 @@ public class ProductDAO {
 	// 商品IDで単一商品を取得する
     public Product selectById(int productId) throws Exception {
         String sql = "SELECT * FROM s_product WHERE product_id = ?";
-        try (Connection con = DbManager.getConnection("mysql");
+        try (Connection con = DbManager.getConnection("h2");
              PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setInt(1, productId);
@@ -58,7 +58,7 @@ public class ProductDAO {
 	public int insert(Product product) throws Exception {
 		String sql = "INSERT INTO s_product(product_name, stock, price) VALUES (?, ?, ?)";
 
-		try (Connection con = DbManager.getConnection("mysql");
+		try (Connection con = DbManager.getConnection("h2");
 				PreparedStatement ps = con.prepareStatement(sql)) {
 			ps.setString(1, product.getProductName());
 			ps.setInt(2, product.getStock());
@@ -71,7 +71,7 @@ public class ProductDAO {
 	public int update(Product product) throws Exception {
 		String sql = "UPDATE s_product SET product_name=?, stock=?, price=? WHERE product_id=?";
 
-		try (Connection con = DbManager.getConnection("mysql");
+		try (Connection con = DbManager.getConnection("h2");
 				PreparedStatement ps = con.prepareStatement(sql)) {
 			ps.setString(1, product.getProductName());
 			ps.setInt(2, product.getStock());
@@ -85,7 +85,7 @@ public class ProductDAO {
 	public int delete(int productId) throws Exception {
 		String sql = "DELETE FROM s_product WHERE product_id=?";
 
-		try (Connection con = DbManager.getConnection("mysql");
+		try (Connection con = DbManager.getConnection("h2");
 				PreparedStatement ps = con.prepareStatement(sql)) {
 			ps.setInt(1, productId);
 			return ps.executeUpdate();
@@ -96,7 +96,7 @@ public class ProductDAO {
 	public int updateStock(int productId,int delta) throws Exception {
 		String sql = "UPDATE s_product SET stock = stock + ? WHERE product_id=?";
 
-		try (Connection con = DbManager.getConnection("mysql");
+		try (Connection con = DbManager.getConnection("h2");
 				PreparedStatement ps = con.prepareStatement(sql)) {
 			ps.setInt(1, delta);
 			ps.setInt(2, productId);

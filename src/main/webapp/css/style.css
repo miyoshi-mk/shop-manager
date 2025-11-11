@@ -89,57 +89,57 @@ body{
 /* === Login/register共通 === */
 .loginpage{
 	display:flex;
-	align-items:center; 
-	justify-content:center; 
+	align-items:center;
+	justify-content:center;
 	min-height:100vh;
     background: linear-gradient(180deg, #f7fbff 0%, #eef7f8 100%);
     font-family:"Noto Sans JP", "Helvetica Neue", sans-serif; margin:0;
 }
 .login-container{
-    width:380px; 
-	padding:44px; 
-	border-radius:16px; 
+    width:380px;
+	padding:44px;
+	border-radius:16px;
 	background:#ffffff;
     box-shadow: 0 12px 30px rgba(34,50,80,0.08);
-    text-align:center; 
+    text-align:center;
 	border: 1px solid rgba(74,96,120,0.06);
 }
 
-.loginpage h2{ 
-	color:#334155; 
-	font-size:1.5rem; 
+.loginpage h2{
+	color:#334155;
+	font-size:1.5rem;
 	margin-bottom:18px;
 }
-.loginpage label{ 
-	display:block; 
-	text-align:left; 
-	margin:8px 0 6px; 
-	color:#596173; 
+.loginpage label{
+	display:block;
+	text-align:left;
+	margin:8px 0 6px;
+	color:#596173;
 	font-weight:500;
 }
 .loginpage input[type="text"], .loginpage input[type="password"]{
-	width:100%; 
-	padding:12px; 
-	border-radius:10px; 
-	border:1px solid #e6eef6; 
+	width:100%;
+	padding:12px;
+	border-radius:10px;
+	border:1px solid #e6eef6;
 	margin-bottom:12px;
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
 }
 
 .loginpage input[type="submit"]{
-	width:100%; 
-	padding:12px; 
-	border-radius:10px; 
-	border:none; 
+	width:100%;
+	padding:12px;
+	border-radius:10px;
+	border:none;
 	font-weight:700;
-    background: linear-gradient(90deg,#6fb3ff,#4a90e2); 
-	color:#fff; 
+    background: linear-gradient(90deg,#6fb3ff,#4a90e2);
+	color:#fff;
 	box-shadow:0 8px 18px rgba(74,96,120,0.12);
 }
-.loginpage a{ 
-	display:inline-block; 
-	margin-top:12px; 
-	color:#4a90e2; 
+.loginpage a{
+	display:inline-block;
+	margin-top:12px;
+	color:#4a90e2;
 }
 
 .loginpage .error {
@@ -287,8 +287,8 @@ a.link-back:hover {
 }
 
 /* === テーブル本体 === */
-.product-table, .order-table, 
-.customer-table, .product-table, 
+.product-table, .order-table,
+.customer-table, .product-table,
 .sales-table  {
   width: 100%;
   border-collapse: collapse;
@@ -308,20 +308,20 @@ a.link-back:hover {
 .sales-table th,
 .order-table td, .customer-table td,
 .sales-table td {
-	border: 1px solid #ccc; 
+	border: 1px solid #ccc;
 	padding: 10px 12px;
 	text-align: left;
 }
 
-.product-table th, .order-table th, 
-.customer-table th, .product-table th, 
+.product-table th, .order-table th,
+.customer-table th, .product-table th,
 .sales-table th {
   background-color: #f0f4f8;
   color: var(--primary);
   font-weight: 600;
 }
 
-/* 各列の幅調整 */
+/* 商品リスト　各列の幅調整 */
 .product-table th:nth-child(1),
 .product-table td:nth-child(1) {
   width: 8%;   /* ID */
@@ -347,6 +347,7 @@ a.link-back:hover {
   width: 22%;  /* 操作ボタン（編集・削除） */
 }
 
+/* 顧客リスト　各列の幅調整 */
 .customer-table th:nth-child(1),
 .customer-table td:nth-child(1) {
   width: 5%;   /* ID */
@@ -354,12 +355,12 @@ a.link-back:hover {
 
 .customer-table th:nth-child(2),
 .customer-table td:nth-child(2) {
-  width: 12%;  /* 名前 */
+  width: 15%;  /* 名前 */
 }
 
 .customer-table th:nth-child(3),
 .customer-table td:nth-child(3) {
-  width: 23%;  /* Email */
+  width: 20%;  /* Email */
 }
 
 .customer-table th:nth-child(4),
@@ -374,6 +375,66 @@ a.link-back:hover {
 .customer-table th:nth-child(6),
 .customer-table td:nth-child(6) {
   width: 20%;  /* 登録日時 */
+}
+
+/* 売上リスト　各列の幅調整 */
+.sales-table th:nth-child(1),
+.sales-table td:nth-child(1) {
+  width: 5%;   /* ID */
+}
+
+.sales-table th:nth-child(2),
+.sales-table td:nth-child(2) {
+  width: 22%;  /* 商品名 */
+}
+
+.sales-table th:nth-child(3),
+.sales-table td:nth-child(3) {
+  width: 18%;  /* 顧客名 */
+}
+
+.sales-table th:nth-child(4),
+.sales-table td:nth-child(4) {
+  width: 8%;  /* 数量 */
+}
+
+.sales-table th:nth-child(5),
+.sales-table td:nth-child(5) {
+  width: 27%;  /* 日時 */
+}
+.sales-table th:nth-child(6),
+.sales-table td:nth-child(6) {
+  width: 20%;  /* 備考 */
+}
+
+/* 発注リスト　各列の幅調整 */
+.order-table th:nth-child(1),
+.order-table td:nth-child(1) {
+  width: 11%;   /* ID */
+}
+
+.order-table th:nth-child(2),
+.order-table td:nth-child(2) {
+  width: 11%;  /* 商品ID */
+}
+
+.order-table th:nth-child(3),
+.order-table td:nth-child(3) {
+  width: 13%;  /* 数量 */
+}
+
+.order-table th:nth-child(4),
+.order-table td:nth-child(4) {
+  width: 15%;  /* ステータス */
+}
+
+.order-table th:nth-child(5),
+.order-table td:nth-child(5) {
+  width: 28%;  /* 注文日 */
+}
+.order-table th:nth-child(6),
+.order-table td:nth-child(6) {
+  width: 22%;  /* 操作 */
 }
 
 

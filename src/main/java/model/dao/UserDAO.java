@@ -13,7 +13,7 @@ public class UserDAO {
 	public User login(String userName, String password) throws Exception {
         String sql =  "SELECT user_id, user_name, password FROM s_user WHERE user_name = ? AND password = ?";
 
-        try (Connection con = DbManager.getConnection("mysql");
+        try (Connection con = DbManager.getConnection("h2");
              PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setString(1, userName);
@@ -31,12 +31,12 @@ public class UserDAO {
         }
         return null;
     }
-	
+
 	//ユーザー登録
 	public boolean insert(User user) throws Exception {
 	    String sql = "INSERT INTO s_user (user_name, password) VALUES (?, ?)";
 
-	    try (Connection con = DbManager.getConnection("mysql");
+	    try (Connection con = DbManager.getConnection("h2");
 	         PreparedStatement ps = con.prepareStatement(sql)) {
 
 	        ps.setString(1, user.getUserName());
@@ -44,11 +44,11 @@ public class UserDAO {
 
 	        int result = ps.executeUpdate();
 	        return result == 1;
-	        
+
 	    } catch (SQLException e) {
 	    	e.printStackTrace();
 	    	return false;
 	    }
 	}
-	
+
 }
