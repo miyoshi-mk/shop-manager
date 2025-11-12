@@ -31,66 +31,68 @@
 ---
 
 ## 📂 ディレクトリ構成
-project/
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   ├── control/
-│   │   │   │   ├── AddCustomerServlet.java
-│   │   │   │   ├── AddOrderServlet.java
-│   │   │   │   ├── AddProductServlet.java
-│   │   │   │   ├── CustomerListServlet.java
-│   │   │   │   ├── DashboardServlet.java
-│   │   │   │   ├── DeleteProductServlet.java
-│   │   │   │   ├── EditProductServlet.java
-│   │   │   │   ├── LoginServlet.java
-│   │   │   │   ├── LogoutServlet.java
-│   │   │   │   ├── PageServlet.java
-│   │   │   │   ├── ProductListServlet.java
-│   │   │   │   ├── SalesInsertServlet.java
-│   │   │   │   ├── UpdateOrderStatusServlet.java
-│   │   │   │   └── UserInsertServlet.java
-│   │   │   ├── model/
-│   │   │   │   ├── Customer.java
-│   │   │   │   ├── InventoryService.java
-│   │   │   │   ├── Order.java
-│   │   │   │   ├── Poduct.java
-│   │   │   │   ├── Sales.java
-│   │   │   │   └── User.java
-│   │   │   ├── model.dao/
-│   │   │   │   ├── CustomerDAO.java
-│   │   │   │   ├── DbManager.java
-│   │   │   │   ├── OrderDAO.java
-│   │   │   │   ├── ProductDAO.java
-│   │   │   │   ├── SalesDAO.java
-│   │   │   │   └── UserDAO.java
-│   │   ├── webapp/
-│   │   │   ├── css/
-│   │   │   │   ├── dashboard.css
-│   │   │   │   └── style.css
-│   │   │   ├── WEB-INF/web.xml
-│   │   │   │   ├── classes/
-│   │   │   │   │   └──db.properties
-│   │   │   │   ├── jsp/
-│   │   │   │   │   ├── addCustomer.jsp
-│   │   │   │   │   ├── AddOrder.jsp
-│   │   │   │   │   ├── AddProduct.jsp
-│   │   │   │   │   ├── customerList.jsp
-│   │   │   │   │   ├── dashboard.jsp
-│   │   │   │   │   ├── editProduct.jsp
-│   │   │   │   │   ├── header.jsp
-│   │   │   │   │   ├── login.jsp
-│   │   │   │   │   ├── orderList.jsp
-│   │   │   │   │   ├── productList.jsp
-│   │   │   │   │   ├── register.jsp
-│   │   │   │   │   ├── salesInsert.jsp
-│   │   │   │   │   ├── salesList.jsp
-│   │   │   │   │   └── sidebar.jsp
-└── docs/
-│   ├── ER図.drawio
-│   ├── README.md
-└── └── 画面遷移図.drawio
 
+project/  
+├── src/  
+│   ├── main/  
+│   │   ├── java/  
+│   │   │   ├── control/  
+│   │   │   │   ├── AddCustomerServlet.java  
+│   │   │   │   ├── AddOrderServlet.java  
+│   │   │   │   ├── AddProductServlet.java  
+│   │   │   │   ├── CustomerListServlet.java  
+│   │   │   │   ├── DashboardServlet.java  
+│   │   │   │   ├── DeleteProductServlet.java  
+│   │   │   │   ├── EditProductServlet.java  
+│   │   │   │   ├── LoginServlet.java  
+│   │   │   │   ├── LogoutServlet.java  
+│   │   │   │   ├── PageServlet.java  
+│   │   │   │   ├── ProductListServlet.java  
+│   │   │   │   ├── SalesInsertServlet.java  
+│   │   │   │   ├── UpdateOrderStatusServlet.java  
+│   │   │   │   └── UserInsertServlet.java  
+│   │   │   ├── model/  
+│   │   │   │   ├── Customer.java  
+│   │   │   │   ├── InventoryService.java  
+│   │   │   │   ├── Order.java  
+│   │   │   │   ├── Poduct.java  
+│   │   │   │   ├── Sales.java  
+│   │   │   │   └── User.java  
+│   │   │   ├── model.dao/  
+│   │   │   │   ├── CustomerDAO.java  
+│   │   │   │   ├── DbManager.java  
+│   │   │   │   ├── OrderDAO.java  
+│   │   │   │   ├── ProductDAO.java  
+│   │   │   │   ├── SalesDAO.java  
+│   │   │   │   └── UserDAO.java  
+│   │   ├── webapp/  
+│   │   │   ├── css/  
+│   │   │   │   ├── dashboard.css  
+│   │   │   │   └── style.css  
+│   │   │   ├── WEB-INF/web.xml  
+│   │   │   │   ├── classes/  
+│   │   │   │   │   └──db.properties  
+│   │   │   │   ├── jsp/  
+│   │   │   │   │   ├── addCustomer.jsp  
+│   │   │   │   │   ├── AddOrder.jsp  
+│   │   │   │   │   ├── AddProduct.jsp  
+│   │   │   │   │   ├── customerList.jsp  
+│   │   │   │   │   ├── dashboard.jsp  
+│   │   │   │   │   ├── editProduct.jsp  
+│   │   │   │   │   ├── header.jsp  
+│   │   │   │   │   ├── login.jsp  
+│   │   │   │   │   ├── orderList.jsp  
+│   │   │   │   │   ├── productList.jsp  
+│   │   │   │   │   ├── register.jsp  
+│   │   │   │   │   ├── salesInsert.jsp  
+│   │   │   │   │   ├── salesList.jsp  
+│   │   └── └── └── └── sidebar.jsp  
+└── docs/  
+│   ├── ER図.drawio  
+│   ├── README.md  
+└── └── 画面遷移図.drawio  
+
+---
 
 ## 🗄 データベース構成
 | テーブル名 | 主なカラム|
