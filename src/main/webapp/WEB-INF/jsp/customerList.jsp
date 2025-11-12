@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>顧客管理ページ</title>
+<title>顧客管理</title>
 <link rel="stylesheet"  href="${pageContext.request.contextPath}/css/style.css">
 </head>
 <body>
@@ -16,7 +16,11 @@
 
 <main class="main-content">
 	<h2>顧客一覧</h2>
-	<a href="${pageContext.request.contextPath}/add-customer">新規登録</a>
+
+	<div class="table-actions">
+		<a href="${pageContext.request.contextPath}/add-customer" class="btn add-btn">＋ 新規登録</a>
+	</div>
+
 	<c:if test="${not empty customerList}">
 	<table class="customer-table">
         <thead>

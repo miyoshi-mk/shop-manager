@@ -26,7 +26,11 @@ function deleteOrder(id) {
 
 <main class="main-content">
 	<h2>発注管理</h2>
-	
+
+	<div class="table-actions">
+		<a href="${pageContext.request.contextPath}/addOrder" class="btn add-btn">＋ 新規登録</a>
+	</div>
+
 	<table class="order-table">
 	    <tr>
 	        <th>注文ID</th>
@@ -68,8 +72,7 @@ function deleteOrder(id) {
 	    </tr>
 	<% } %>
 	</table>
-	
-	<a href="${pageContext.request.contextPath}/addOrder">新規発注</a>
+
 </main>
 </body>
 </html>
