@@ -19,7 +19,7 @@ import model.dao.ProductDAO;
 public class UpdateOrderStatusServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private OrderDAO orderDao = new OrderDAO();
-       
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -32,8 +32,7 @@ public class UpdateOrderStatusServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		System.out.println("UpdateOrderStatusServlet 呼び出しOK");
+
 		request.setCharacterEncoding("UTF-8");
 
 	        try {
@@ -42,7 +41,7 @@ public class UpdateOrderStatusServlet extends HttpServlet {
 
 	            // ステータスを更新
 	            orderDao.updateStatus(orderId, status);
-	            
+
 	         // ステータスが「入荷済」なら在庫を加算
 	            if ("入荷済".equals(status)) {
 	                Order order = orderDao.selectById(orderId);  // 発注情報を取得

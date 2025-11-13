@@ -14,7 +14,6 @@ public class DbManager {
                 throw new RuntimeException("db.properties が見つかりません。クラスパスを確認してください。");
             }
             props.load(in);
-            System.out.println("Loaded properties: " + props);
         }
 
         String prefix = env.equals("mysql") ? "mysql" : "h2";

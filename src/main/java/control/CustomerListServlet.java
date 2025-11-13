@@ -19,7 +19,7 @@ import model.dao.CustomerDAO;
 public class CustomerListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private CustomerDAO customerDAO = new CustomerDAO();
-       
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -32,19 +32,18 @@ public class CustomerListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("=== CustomerListServlet accessed ===");
-		
+
 		try {
 			CustomerDAO dao = new CustomerDAO();
 			List<Customer> list = dao.selectAll();
 			System.out.println("customer list size = " + (list == null ? 0 : list.size()));
-			
+
 			request.setAttribute("customerList", list);
 			request.getRequestDispatcher("/WEB-INF/jsp/customerList.jsp").forward(request, response);
-		
+
 		} catch (Exception e) {
 			e.printStackTrace();
-			
+
 			request.setAttribute("error", "顧客一覧の取得中にエラーが発生しました");
 			request.getRequestDispatcher("/WEB-INF/jsp/error.jsp").forward(request, response);
 		}

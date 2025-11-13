@@ -35,21 +35,21 @@
 		    <div class="card-value">¥<c:out value="${totalSales}" /></div>
     	</div>
   	</div>
-  	
+
   	<div class="dashboard">
 		  <!-- 全体指標 棒グラフ -->
 		  <div class="overall-chart">
 		    <h3>全体指標</h3>
 		    <canvas id="overallChart"></canvas>
 		  </div>
-		  
+
 		  <!-- 商品別＆月別チャート -->
 		  <div class="charts">
 		    <div class="chart-container">
 		      <h3>商品別売上</h3>
 		      <canvas id="productSalesChart"></canvas>
 		    </div>
-		
+
 		    <div class="chart-container">
 		      <h3>週別売上推移</h3>
 		      <canvas id="monthlySalesChart"></canvas>
@@ -57,13 +57,16 @@
 		  </div>
 	</div>
 </main>
-	
+
 <script>
 (function(){
-  const totalProducts = Number('${totalProducts}');
-  const totalStock = Number('${totalStock}');
-  const totalOrders = Number('${totalOrders}');
-  const totalSales = Number('${totalSales}');
+  const totalProducts = Number('<c:out value="${totalProducts}" />');
+  const totalStock = Number('<c:out value="${totalStock}" />');
+  const totalOrders = Number('<c:out value="${totalOrders}" />');
+  const totalSales = Number('<c:out value="${totalSales}" />');
+
+  console.log("totalSales =", totalSales);    //デバッグ用
+
   // 商品別売上データ
   const productNames = ${productLabelsJson};
   const productSales = ${productSalesJson};
@@ -111,7 +114,7 @@
       }
     }
   });
-  
+
 //円グラフ（商品別売上）
   new Chart(document.getElementById('productSalesChart').getContext('2d'), {
     type:'doughnut',
