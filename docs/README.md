@@ -86,7 +86,7 @@ project/
 │   │   │   │   │   ├── register.jsp  
 │   │   │   │   │   ├── salesInsert.jsp  
 │   │   │   │   │   ├── salesList.jsp  
-│   │               └── sidebar.jsp  
+│   │   │   │   │   └── sidebar.jsp  
 └── docs/  
 │   ├── ER図.drawio  
 │   ├── README.md  
