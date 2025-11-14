@@ -2,6 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.List, model.Customer" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 
 <!DOCTYPE html>
 <html>
@@ -41,7 +45,9 @@
                     <td>${c.email}</td>
                     <td>${c.phone}</td>
                     <td>${c.address}</td>
-                    <td>${c.registeredAt}</td>
+                    <td>
+					    <fmt:formatDate value="${c.registeredAt}" pattern="yyyy-MM-dd HH:mm:ss" />
+					</td>
                 </tr>
             </c:forEach>
         </tbody>

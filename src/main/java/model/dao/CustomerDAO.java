@@ -28,7 +28,7 @@ public class CustomerDAO {
                 c.setAddress(rs.getString("address"));
 
                 Timestamp ts = rs.getTimestamp("registered_at");
-                if (ts != null) c.setRegisteredAt(ts.toLocalDateTime());
+                c.setRegisteredAt(ts);
 
                 list.add(c);
             }

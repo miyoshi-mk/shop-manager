@@ -59,7 +59,7 @@ public class SalesDAO {
                 s.setCustomerId(rs.getInt("customer_id"));
                 s.setQuantity(rs.getInt("quantity"));
                 Timestamp ts = rs.getTimestamp("sale_date");
-                if (ts != null) s.setSaleDate(ts.toLocalDateTime());
+                s.setSaleDate(ts);
                 s.setRemarks(rs.getString("remarks"));
                 list.add(s);
             }

@@ -1,6 +1,6 @@
 package model;
 
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 //売上情報クラス
 public class Sales {
@@ -10,7 +10,7 @@ public class Sales {
 	private int productId;
 	private int customerId;
 	private int quantity;
-	private LocalDateTime saleDate;
+	private Timestamp saleDate;
 	private String remarks;
 
 	// Getter / Setter
@@ -46,11 +46,11 @@ public class Sales {
 		this.quantity = quantity;
 	}
 
-	public LocalDateTime getSaleDate() {
+	public Timestamp getSaleDate() {
 		return saleDate;
 	}
 
-	public void setSaleDate(LocalDateTime saleDate) {
+	public void setSaleDate(Timestamp saleDate) {
 		this.saleDate = saleDate;
 	}
 

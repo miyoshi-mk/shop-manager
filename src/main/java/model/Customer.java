@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 //顧客情報クラス
@@ -12,7 +13,7 @@ public class Customer implements Serializable {
 	private String email;
 	private String phone;
 	private String address;
-	private LocalDateTime registeredAt;
+	private Timestamp registeredAt;
 
 	//コンストラクタ
 	public Customer() {
@@ -25,8 +26,8 @@ public class Customer implements Serializable {
         this.phone = phone;
         this.address = address;
     }
-	
-	public Customer(int id, String name, String email, String phone, String address, LocalDateTime registeredAt) {
+
+	public Customer(int id, String name, String email, String phone, String address, Timestamp registeredAt) {
 		this.id = id;
 		this.name = name;
 		this.email = email;
@@ -76,11 +77,11 @@ public class Customer implements Serializable {
 		this.address = address;
 	}
 
-	public LocalDateTime getRegisteredAt() {
+	public Timestamp getRegisteredAt() {
 		return registeredAt;
 	}
 
-	public void setRegisteredAt(LocalDateTime registeredAt) {
+	public void setRegisteredAt(Timestamp registeredAt) {
 		this.registeredAt = registeredAt;
 	}
 

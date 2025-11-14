@@ -64,7 +64,12 @@ function deleteOrder(id) {
 	        <td><%=o.getProductId()%></td>
 	        <td><%=o.getQuantity()%></td>
 	        <td><%=o.getStatus()%></td>
-	        <td><%=o.getOrderDate()%></td>
+	       <td>
+			<%
+			    java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			    out.print(sdf.format(o.getOrderDate()));
+			%>
+			</td>
 	        <td>
 	            <a href="${pageContext.request.contextPath}/updateOrderStatus?id=<%= o.getOrderId() %>&status=発注済">発注済</a> |
                 <a href="${pageContext.request.contextPath}/updateOrderStatus?id=<%= o.getOrderId() %>&status=入荷済">入荷済</a>

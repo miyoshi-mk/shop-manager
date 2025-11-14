@@ -66,7 +66,7 @@ public class DashboardServlet extends HttpServlet {
 			        salesMap.put(s.getProductId(), salesMap.getOrDefault(s.getProductId(), 0) + sale);
 
 			        // 週別売上
-			        LocalDate date = s.getSaleDate().toLocalDate();
+			        LocalDate date = s.getSaleDate().toLocalDateTime().toLocalDate();
 			        WeekFields wf = WeekFields.of(Locale.getDefault());
 			        int weekNumber = date.get(wf.weekOfWeekBasedYear());
 			        String yearWeek = date.getYear() + "-W" + String.format("%02d", weekNumber);
