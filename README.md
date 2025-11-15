@@ -107,6 +107,18 @@ project/
 
 ## 実行手順
 
+- ログイン画面
+![ログイン画面](images/login.png)
+
+- ダッシュボード
+![ダッシュボード](images/dashboard.png)
+
+
+- 画面遷移図
+![画面遷移図](images/screen_flow.png)
+
+- クラス図
+![クラス図](imagesclass_diagram.png)
 
 ---
 
